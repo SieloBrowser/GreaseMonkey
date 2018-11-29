@@ -12,7 +12,7 @@
 #-------------------------------------------------------#
 
 set(SIELO_DIR C:/Users/victo/Documents/Cpp/CLion/sielo-browser) # <Set Path to Sielo>
-set(SIELO_LIBS_DIR C:/Users/victo/Documents/Cpp/CLion/sielo-browser/vs2017/lib/Debug/) # <Set Path where Sielo libs are built>
+set(SIELO_LIBS_DIR C:/Users/victo/Documents/Cpp/CLion/sielo-browser/vs2017/lib/Release/) # <Set Path where Sielo libs are built>
 
 #-------------------------------------------------------#
 #                      Windows                          #

@@ -51,6 +51,7 @@ public:
 	void showSettings(QWidget* parent);
 
 	bool acceptNavigationRequest(WebPage* page, const QUrl& url, QWebEnginePage::NavigationType type, bool isMainFrame);
+
 private:
 	Manager* m_manager;
 };
