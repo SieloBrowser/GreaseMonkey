@@ -113,6 +113,7 @@ void AddScriptDialog::setupUI()
 	m_leftSpacer = new QSpacerItem(10, 10, QSizePolicy::Expanding, QSizePolicy::Preferred);
 
 	m_titleLayout->addItem(m_rightSpacer);
+	m_titleLayout->addWidget(m_icon);
 	m_titleLayout->addWidget(m_title);
 	m_titleLayout->addItem(m_leftSpacer);
 
