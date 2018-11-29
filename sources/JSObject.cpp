@@ -27,13 +27,13 @@
 #include <QClipboard>
 #include <QApplication>
 
-JSObjet::JSObjet(QObject* parent) :
+JSObject::JSObject(QObject* parent) :
 	QObject(parent)
 {
 	// Empty
 }
 
-JSObjet::~JSObjet()
+JSObject::~JSObject()
 {
 	if (m_settings) {
 		m_settings->sync();
@@ -42,7 +42,7 @@ JSObjet::~JSObjet()
 	}
 }
 
-void JSObjet::setSettingsFile(const QString& name)
+void JSObject::setSettingsFile(const QString& name)
 {
 	if (m_settings) {
 		m_settings->sync();
@@ -52,7 +52,7 @@ void JSObjet::setSettingsFile(const QString& name)
 	m_settings = new QSettings(name, QSettings::IniFormat);
 }
 
-QString JSObjet::getValue(const QString& nspace, const QString& name, const QString& dValue)
+QString JSObject::getValue(const QString& nspace, const QString& name, const QString& dValue)
 {
 	QString valueName{QString("GreaseMonkey-%1/%2").arg(nspace, name)};
 	QString savedValue{m_settings->value(valueName, dValue).toString()};
@@ -63,7 +63,7 @@ QString JSObjet::getValue(const QString& nspace, const QString& name, const QStr
 	return savedValue;
 }
 
-bool JSObjet::setValue(const QString& nspace, const QString& name, const QString& value)
+bool JSObject::setValue(const QString& nspace, const QString& name, const QString& value)
 {
 	QString valueName{QString("GreaseMonkey-%1/%2").arg(nspace, name)};
 	m_settings->setValue(valueName, value);
@@ -71,7 +71,7 @@ bool JSObjet::setValue(const QString& nspace, const QString& name, const QString
 	return true;
 }
 
-bool JSObjet::deleteValue(const QString& nspace, const QString& name)
+bool JSObject::deleteValue(const QString& nspace, const QString& name)
 {
 	QString valueName{QString("GreaseMonkey-%1/%2").arg(nspace, name)};
 	m_settings->remove(valueName);
@@ -79,7 +79,7 @@ bool JSObjet::deleteValue(const QString& nspace, const QString& name)
 	return true;
 }
 
-QStringList JSObjet::listValues(const QString& nspace)
+QStringList JSObject::listValues(const QString& nspace)
 {
 	QString nspaceName{QString("GreaseMonkey-%1").arg(nspace)};
 
@@ -90,7 +90,7 @@ QStringList JSObjet::listValues(const QString& nspace)
 	return keys;
 }
 
-void JSObjet::setClipboard(const QString& text)
+void JSObject::setClipboard(const QString& text)
 {
 	QApplication::clipboard()->setText(text);
 }

@@ -30,12 +30,12 @@
 
 #include <QSettings>
 
-class JSObjet: public QObject {
+class JSObject: public QObject {
 	Q_OBJECT
 
 public:
-	explicit JSObjet(QObject* parent = nullptr);
-	~JSObjet();
+	explicit JSObject(QObject* parent = nullptr);
+	~JSObject();
 
 	void setSettingsFile(const QString& name);
 
