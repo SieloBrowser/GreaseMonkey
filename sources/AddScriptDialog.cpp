@@ -58,6 +58,11 @@ AddScriptDialog::AddScriptDialog(Manager* manager, Script* script, QWidget* pare
 	QString scriptInfo{QString("<b>%1</b> %2<br/>%3 %4 %5").arg(script->name(), script->version(), script->description(), runsAt, dontRunsAt)};
 
 	m_textBrowser->setText(scriptInfo);
+
+	connect(m_showSource, &QPushButton::clicked, this, &AddScriptDialog::showSource);
+	connect(m_dialogButtonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
+	connect(m_dialogButtonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
+	connect(this, &QDialog::accepted, this, &AddScriptDialog::accepted);
 }
 
 void AddScriptDialog::showSource()

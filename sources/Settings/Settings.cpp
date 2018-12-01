@@ -53,6 +53,9 @@ Settings::Settings(Manager* manager, QWidget* parent) :
 
 	connect(m_manager, &Manager::scriptsChanged, this, &Settings::loadScripts);
 
+	connect(m_dialogButtonBox, &QDialogButtonBox::accepted, this, &Settings::accept);
+	connect(m_dialogButtonBox, &QDialogButtonBox::rejected, this, &Settings::reject);
+
 	loadScripts();
 }
 
