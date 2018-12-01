@@ -24,6 +24,8 @@
 
 #include "Manager.hpp"
 
+#include <QMessageBox>
+
 #include <QDir>
 #include <QWebEngineScriptCollection>
 
@@ -199,6 +201,7 @@ bool Manager::removeScript(Script* script, bool removeFile)
 void Manager::showNotification(const QString& message, const QString& title)
 {
 	// TODO: wait for Sielo's desktop notifiaction
+	QMessageBox::information(nullptr, title, message);
 }
 
 void Manager::load()
