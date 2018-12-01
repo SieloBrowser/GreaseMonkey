@@ -34,6 +34,9 @@ void GreaseMonkey::unload()
 {
 	m_manager->unloadPlugin();
 	delete m_manager;
+
+	foreach(Sn::ToolButton* button, m_navigationBarButtons)
+		delete button;
 }
 
 bool GreaseMonkey::testPlugin()
@@ -58,5 +61,28 @@ bool GreaseMonkey::acceptNavigationRequest(WebPage* page, const QUrl& url, QWebE
 	}
 	
 	return true;
+}
+
+QWidget* GreaseMonkey::navigationBarButton(TabWidget* tabWidget)
+{
+	Sn::ToolButton* button{new Sn::ToolButton()};
+
+	button->setObjectName("navigation-button-greasemonkey");
+	button->setToolTip(tr("GreaseMonkey settings"));
+	button->setIcon(QIcon(":gm/data/icon.svg"));
+	button->setToolButtonStyle(Qt::ToolButtonIconOnly);
+	//button->setToolBarButtonLook(true);
+	button->setAutoRaise(true);
+	button->setFocusPolicy(Qt::NoFocus);
+
+	connect(button, &Sn::ToolButton::clicked, this, &GreaseMonkey::openSettings);
+
+	m_navigationBarButtons.append(button);
+	return button;
+}
+
+void GreaseMonkey::openSettings()
+{
+	m_manager->showSettings(nullptr);
 }
 }

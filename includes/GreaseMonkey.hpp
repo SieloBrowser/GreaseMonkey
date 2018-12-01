@@ -28,6 +28,8 @@
 
 #include "Plugins/PluginInterface.hpp"
 
+#include "Utils/ToolButton.hpp"
+
 class Manager;
 
 namespace Sn
@@ -52,8 +54,15 @@ public:
 
 	bool acceptNavigationRequest(WebPage* page, const QUrl& url, QWebEnginePage::NavigationType type, bool isMainFrame);
 
+	QWidget* navigationBarButton(TabWidget* tabWidget);
+
+public slots:
+	void openSettings();
+
 private:
 	Manager* m_manager;
+
+	QList<Sn::ToolButton*> m_navigationBarButtons{};
 };
 }
 
